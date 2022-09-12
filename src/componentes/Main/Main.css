@@ -31,13 +31,7 @@
     .cards{
         column-gap: 2%;
         row-gap: 1rem;
-        
-        
-       
-      
+ 
     }
   
-    .search-filter{
-        margin: 0;
-    }
 }
