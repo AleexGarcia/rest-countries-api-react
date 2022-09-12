@@ -1,0 +1,32 @@
+.search-box {
+
+    border-radius: 6px;
+    background: var(--el-dark-blue);
+    padding: 1rem 1.5rem;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+}
+
+.search__input {
+    padding: 0 8px;
+    outline: none;
+    border: none;
+    background: inherit;
+    width: 100%;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-white);
+   
+}
+.search__input::placeholder{
+    color: var(--text-white);
+}
+@media screen and (min-width:640px){
+    .search-box{
+        margin: 0;
+        width: 33%;
+    }
+   
+}

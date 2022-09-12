@@ -1,0 +1,46 @@
+.header{
+    background: var(--el-dark-blue);
+    padding: 1rem;
+ 
+}
+.header__nav{
+    height: 100%;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
+.header__title{
+    font-weight: 800;
+}
+.header__title a{
+    font-family: inherit;
+    color: inherit;
+    text-decoration: none;
+
+}
+
+.darkModeLb{
+    cursor: pointer;
+    font-weight: 600;
+}
+.darkModeLb::before{
+    content: "\f186";
+    font-family:"Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 8px;
+    color: var(--text-white);
+  
+ }
+ .darkmode.darkModeLb::before{
+    content: "\f185";
+  
+ 
+ }
+ #darkModeBtn{
+     display: none;
+ }

@@ -1,0 +1,43 @@
+.cards{
+    min-height: 50vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+
+    padding-top: 2rem ;
+
+}
+@media screen and (min-width:640px){
+    .cards{
+        
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+        column-gap: 2%;
+        row-gap: 1rem;
+        
+    }
+    .search-filter{
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        padding-top: 2rem;
+    }
+}
+@media screen and (min-width:1023px){
+    .cards{
+        column-gap: 2%;
+        row-gap: 1rem;
+        
+        
+       
+      
+    }
+  
+    .search-filter{
+        margin: 0;
+    }
+}

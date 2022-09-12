@@ -1,0 +1,42 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+@import url('_variaveis.css');
+*{
+    box-sizing: border-box;
+}
+body{
+    font-size: 1rem;
+    color: var(--text-white);
+    background: var(--bkg-v-dark-blue);
+    font-family: var(--font-family);
+    font-weight: 300;
+    min-height: 100vh;
+   
+}
+
+.open{
+    position: absolute;
+    display: inline-block;
+    z-index: 1;
+}
+.oculto{
+    display: none;
+}
+.attribution {
+
+    font-size: 11px;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+.container{
+    max-width: 90%;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
