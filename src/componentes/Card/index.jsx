@@ -1,14 +1,21 @@
 
-
 import style from './Card.module.css'
 
 export default function Cards(props) {
 
     return (
 
-        <div id={props.id} className={style.cardBox} data-region={props.region} data-name={props.name}>
+        <div
+            onClick={() => {
+                props.info(true) 
+                props.retornaID(props.id)
+            }}
+            id={props.id}
+            className={style.cardBox}
+            data-region={props.region}
+            data-name={props.name}>
             <figure className={style.card}>
-                <img className={style.card__img} src={props.flags.png} alt={props.name} />
+                <img className={style.card__img} src={props.flags} alt={props.name} />
                 <figcaption className={style.card__caption}>
                     <h2 className={style.card__title}>{props.name}</h2>
                     <div className={style.card__information}>
