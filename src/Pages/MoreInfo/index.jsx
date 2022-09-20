@@ -3,11 +3,19 @@ import { useContext } from "react"
 import './info.css'
 import MyContext from "../../contexts/MyContext"
 
-export default function MoreInfo({id}) {
+export default function MoreInfo({ id , closeInfo , exibePaginaInicial }) {
     const [countries] = useContext(MyContext);
     return (
         <>
-            <button onClick={()=>{}} id="more-info__btn" className="more-info__btn">Back</button>
+            <button
+                onClick={() => {
+                    closeInfo(false);
+                    exibePaginaInicial(true);
+                }}
+                id="more-info__btn"
+                className="more-info__btn"
+            >Back
+            </button>
             <figure id="country" className="country">
                 <img src={countries[id].flags.svg} alt={countries[id].name} className="country__img" />
                 <figcaption className="country__info">
@@ -24,12 +32,12 @@ export default function MoreInfo({id}) {
                     <div className="info-2">
                         <span className="country__domain"><strong>Top Level Domain: </strong>{countries[id].topLevelDomain}</span>
                         <span className="country__currencies"><strong>Currencies: </strong>{countries[id].currencies[0].name}</span>
-                        <span className="country__languages"><strong>Languages: </strong>{}</span>
+                        <span className="country__languages"><strong>Languages: </strong>{ }</span>
                     </div>
                     <div className="info__border">
                         <span className="country__border">Border Countries</span>
                         <div className="border__links">
-                          
+
 
                         </div>
                     </div>

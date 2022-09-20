@@ -9,6 +9,7 @@ export default function Cards(props) {
             onClick={() => {
                 props.info(true) 
                 props.retornaID(props.id)
+                props.paginaPrincipal(false)
             }}
             id={props.id}
             className={style.cardBox}

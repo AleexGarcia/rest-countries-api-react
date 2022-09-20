@@ -11,31 +11,47 @@ import MoreInfo from '../MoreInfo';
 
 export default function PaginaInicial() {
     const [countries] = useContext(MyContext);
-    const [openInfo, setOpenInfo] = useState(false)
-    const [retornaID, setRetornaID] = useState(0)
+    const [controlInfo, setControlInfo] = useState(false);
+    const [exibePaginaInicial, setExibePaginaInicial] = useState(true);
+    const [retornaID, setRetornaID] = useState(0);
 
 
     return (
         <main className="main" id="main">
-            <section className="search-filter container" id="search-filter"><Search /><Filter /></section>
-            <section  className='more-info container'>
-                {openInfo === true ? <MoreInfo id={retornaID} /> : null}
-            </section>
-            <section className="cards container" id="cartas">
-                {countries.map((country, index) => (
-                    <Card
-                        key={country.name}
-                        id={index}
-                        region={country.region}
-                        name={country.name}
-                        flags={country.flags.png}
-                        population={country.population}
-                        capital={country.capital}
-                        info = {setOpenInfo}
-                        retornaID = {setRetornaID}
-                    />
-                ))}
-            </section>
+
+            {controlInfo === true ?
+                <section className='more-info container'>
+                    <MoreInfo id={retornaID} closeInfo={setControlInfo} exibePaginaInicial = {setExibePaginaInicial} />
+                </section>
+                : null}
+
+            {
+                exibePaginaInicial === true ?
+                    <>
+                        <section className="search-filter container"><Search /><Filter /></section>
+                        <section className="cards container" >
+                            {countries.map((country, index) => (
+                                <Card
+                                    key={country.name}
+                                    id={index}
+                                    region={country.region}
+                                    name={country.name}
+                                    flags={country.flags.png}
+                                    population={country.population}
+                                    capital={country.capital}
+                                    info={setControlInfo}
+                                    paginaPrincipal = {setExibePaginaInicial}
+                                    retornaID={setRetornaID}
+                                />
+                            ))}
+                        </section>
+                    </>
+                    : null
+
+            }
+
+
+
         </main>
     )
 }
