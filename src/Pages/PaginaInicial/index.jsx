@@ -21,7 +21,12 @@ export default function PaginaInicial() {
 
             {controlInfo === true ?
                 <section className='more-info container'>
-                    <MoreInfo id={retornaID} closeInfo={setControlInfo} exibePaginaInicial = {setExibePaginaInicial} />
+                    <MoreInfo 
+                    id={retornaID} 
+                    closeInfo={setControlInfo} 
+                    exibePaginaInicial = {setExibePaginaInicial} 
+                    retornaID = {setRetornaID}
+                    />
                 </section>
                 : null}
 

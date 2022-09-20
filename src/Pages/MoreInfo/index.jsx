@@ -3,8 +3,9 @@ import { useContext } from "react"
 import './info.css'
 import MyContext from "../../contexts/MyContext"
 
-export default function MoreInfo({ id , closeInfo , exibePaginaInicial }) {
+export default function MoreInfo({ id, closeInfo, exibePaginaInicial, retornaID }) {
     const [countries] = useContext(MyContext);
+    
     return (
         <>
             <button
@@ -37,7 +38,15 @@ export default function MoreInfo({ id , closeInfo , exibePaginaInicial }) {
                     <div className="info__border">
                         <span className="country__border">Border Countries</span>
                         <div className="border__links">
-
+                            {countries[id].borders != null ? countries[id].borders.map(border => (
+                                
+                                <button key={border}
+                                    onClick={( ) => retornaID( 
+                                        countries.findIndex((element) => border === element.alpha3Code)
+                                     )}
+                                    className="country__border-country pointer"
+                                >{countries[countries.findIndex((element) => border === element.alpha3Code)].name}</button>
+                            )) : <span className="country__border-country">There are no border countries</span>}
 
                         </div>
                     </div>
