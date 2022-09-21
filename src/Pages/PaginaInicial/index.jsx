@@ -10,30 +10,35 @@ import MoreInfo from '../MoreInfo';
 
 
 export default function PaginaInicial() {
+
     const [countries] = useContext(MyContext);
     const [controlInfo, setControlInfo] = useState(false);
     const [exibePaginaInicial, setExibePaginaInicial] = useState(true);
     const [retornaID, setRetornaID] = useState(0);
-
+    const [busca, setBusca] = useState('');
+    const [filtro, setFiltro] = useState(null)
+    
+ 
 
     return (
         <main className="main" id="main">
 
             {controlInfo === true ?
                 <section className='more-info container'>
-                    <MoreInfo 
-                    id={retornaID} 
-                    closeInfo={setControlInfo} 
-                    exibePaginaInicial = {setExibePaginaInicial} 
-                    retornaID = {setRetornaID}
+                    <MoreInfo
+                        id={retornaID}
+                        closeInfo={setControlInfo}
+                        exibePaginaInicial={setExibePaginaInicial}
+                        retornaID={setRetornaID}
                     />
                 </section>
                 : null}
-
             {
                 exibePaginaInicial === true ?
                     <>
-                        <section className="search-filter container"><Search /><Filter /></section>
+                        <section className="search-filter container">
+                            <Search /><Filter />
+                        </section>
                         <section className="cards container" >
                             {countries.map((country, index) => (
                                 <Card
@@ -45,8 +50,9 @@ export default function PaginaInicial() {
                                     population={country.population}
                                     capital={country.capital}
                                     info={setControlInfo}
-                                    paginaPrincipal = {setExibePaginaInicial}
+                                    paginaPrincipal={setExibePaginaInicial}
                                     retornaID={setRetornaID}
+                                    busca={busca}
                                 />
                             ))}
                         </section>

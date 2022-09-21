@@ -5,7 +5,7 @@
 }
 .country__img{
     width: 100%;
-    box-shadow: 0px 0px 2px 0px rgb(32, 32, 32);
+
 }
 .more-info__btn{
     background: var(--el-dark-blue);
@@ -62,7 +62,6 @@ strong{
     padding: .5rem 2rem;
     font-family: inherit;
     background: var(--el-dark-blue);
-    box-shadow: 0px 0px 2px 0px rgb(32, 32, 32);
     color: var(--text-white);
 
 }
