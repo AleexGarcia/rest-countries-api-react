@@ -5,6 +5,7 @@ export default function Cards(props) {
 
     return (
 
+
         <div
             onClick={() => {
                 props.info(true) 
@@ -27,6 +28,7 @@ export default function Cards(props) {
                 </figcaption>
             </figure>
         </div>
+        
 
     )
 
