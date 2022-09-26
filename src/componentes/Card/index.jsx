@@ -5,17 +5,15 @@ export default function Cards(props) {
 
     return (
 
-
         <div
             onClick={() => {
                 props.info(true) 
-                props.retornaID(props.id)
+                props.retornaName(props.name)
                 props.paginaPrincipal(false)
             }}
             id={props.id}
             className={style.cardBox}
-            data-region={props.region}
-            data-name={props.name}>
+            >
             <figure className={style.card}>
                 <img className={style.card__img} src={props.flags} alt={props.name} />
                 <figcaption className={style.card__caption}>

@@ -3,9 +3,11 @@ import { useContext } from "react"
 import './info.css'
 import MyContext from "../../contexts/MyContext"
 
-export default function MoreInfo({ id, closeInfo, exibePaginaInicial, retornaID }) {
+
+export default function MoreInfo({ name, closeInfo, exibePaginaInicial, retornaName }) {
     const [countries] = useContext(MyContext);
-    
+  
+    let id = countries.findIndex((element) => name === element.name);
     return (
         <>
             <button
@@ -18,7 +20,7 @@ export default function MoreInfo({ id, closeInfo, exibePaginaInicial, retornaID 
             >Back
             </button>
             <figure id="country" className="country">
-                <img src={countries[id].flags.svg} alt={countries[id].name} className="country__img" />
+                <img src={countries[id].flags.png} alt={countries[id].name} className="country__img" />
                 <figcaption className="country__info">
                     <h1 className="country__name">{countries[id].name}</h1>
                     <div className="info-1">
@@ -32,8 +34,8 @@ export default function MoreInfo({ id, closeInfo, exibePaginaInicial, retornaID 
                     </div>
                     <div className="info-2">
                         <span className="country__domain"><strong>Top Level Domain: </strong>{countries[id].topLevelDomain}</span>
-                        <span className="country__currencies"><strong>Currencies: </strong>{countries[id].currencies[0].name}</span>
-                        <span className="country__languages"><strong>Languages: </strong>{ }</span>
+                        <span className="country__currencies"><strong>Currencies: </strong>{countries[id].hasOwnProperty('currencies') ? countries[id].currencies.map(currency => currency.name).join(', ') : null}</span>
+                        <span className="country__languages"><strong>Languages: </strong>{countries[id].hasOwnProperty('languages') ? countries[id].languages.map(language => language.name).join(", ") : null }</span>
                     </div>
                     <div className="info__border">
                         <span className="country__border">Border Countries</span>
@@ -41,8 +43,8 @@ export default function MoreInfo({ id, closeInfo, exibePaginaInicial, retornaID 
                             {countries[id].borders != null ? countries[id].borders.map(border => (
                                 
                                 <button key={border}
-                                    onClick={( ) => retornaID( 
-                                        countries.findIndex((element) => border === element.alpha3Code)
+                                    onClick={( ) => retornaName( 
+                                        countries[countries.findIndex((element) => border === element.alpha3Code)].name
                                      )}
                                     className="country__border-country pointer"
                                 >{countries[countries.findIndex((element) => border === element.alpha3Code)].name}</button>

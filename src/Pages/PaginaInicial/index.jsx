@@ -16,7 +16,7 @@ export default function PaginaInicial() {
     const showCountries = countries;
     const [controlInfo, setControlInfo] = useState(false);
     const [exibePaginaInicial, setExibePaginaInicial] = useState(true);
-    const [retornaID, setRetornaID] = useState(0);
+    const [retornaName, setRetornaName] = useState('');
     const [busca, setBusca] = useState('');
     const [filtro, setFiltro] = useState(null)
     const [lista, setLista] = useState(showCountries);
@@ -43,10 +43,10 @@ export default function PaginaInicial() {
             {controlInfo &&
                 (<section className='more-info container'>
                     <MoreInfo
-                        id={retornaID}
+                        name = {retornaName}
                         closeInfo={setControlInfo}
                         exibePaginaInicial={setExibePaginaInicial}
-                        retornaID={setRetornaID}
+                        retornaName={setRetornaName}
                     />
                 </section>)
             }
@@ -69,7 +69,7 @@ export default function PaginaInicial() {
                                 capital={country.capital}
                                 info={setControlInfo}
                                 paginaPrincipal={setExibePaginaInicial}
-                                retornaID={setRetornaID}
+                                retornaName={setRetornaName}
                             />
                         ))}
                     </section>
