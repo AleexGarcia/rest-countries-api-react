@@ -7,6 +7,7 @@
     border-radius: 8px;
     cursor: pointer;
 }
+
 .filter__input{
     font-size: 14px;
     width: 100%;
@@ -15,6 +16,7 @@
     font-weight: 600;
     color: var(--text-white);
     background: inherit;
+    cursor: pointer;
 }
 .filter__input::placeholder{
     color: var(--text-white);
@@ -26,13 +28,12 @@
     width: 22px;
 }
 .filter{
-    width: 55%;
+    width: 50vw;
     font-weight: 600;
 }
 .dropDown{
-
-    width: 55%;
-   display: none;
+    width: 50vw;
+    position: absolute;
 }
 .listDropDown{
    
@@ -52,10 +53,6 @@
 .listDropDown-item{
     width: 100%;
 }
-.listDropDown-item:hover{
-    background: rgb(77, 184, 255);
-    cursor: pointer;
-}
 
 @media screen and (min-width:640px){
     .filter{
@@ -71,4 +68,9 @@
         width: 100%;
         top: 48px;
     }
+    .listDropDown-item:hover{
+        color: red;
+        cursor: pointer;
+    }
+    
 }

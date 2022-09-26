@@ -21,20 +21,20 @@ export default function PaginaInicial() {
     const [filtro, setFiltro] = useState(null)
     const [lista, setLista] = useState(showCountries);
 
+    useEffect(() => {
+        function testaFiltro(region) {
     
-    function testaFiltro(id){
-        if(filtro !== null) return filtro ===id;
-        return true;
-    }
-    useEffect(( ) =>{
-        
-        function testaBusca(name){
-             const regex = new RegExp(busca, 'i');
-             return regex.test(name);
+            if (filtro !== null) return filtro === region;
+            return true;
         }
-        setLista(showCountries.filter((country,index) => testaBusca(country.name)));
         
-    },[busca,filtro,showCountries]);
+        function testaBusca(name) {
+            const regex = new RegExp(busca, 'i');
+            return regex.test(name);
+        }
+        setLista(showCountries.filter((country, index) => testaBusca(country.name) && testaFiltro(country.region)));
+
+    }, [busca, filtro, showCountries]);
 
 
     return (
@@ -49,31 +49,32 @@ export default function PaginaInicial() {
                         retornaID={setRetornaID}
                     />
                 </section>)
-                }
+            }
             {
                 exibePaginaInicial &&
-                    (<>
-                        <section className="search-filter container">
-                            <Search busca={busca} setBusca={setBusca}/><Filter />
-                        </section>
-                        <section className="cards container" >
-                            {lista.map((country, index) => (
-                                <Card
-                                    key={country.name}
-                                    id={index}
-                                    region={country.region}
-                                    name={country.name}
-                                    flags={country.flags.png}
-                                    population={country.population}
-                                    capital={country.capital}
-                                    info={setControlInfo}
-                                    paginaPrincipal={setExibePaginaInicial}
-                                    retornaID={setRetornaID}
-                                />
-                            ))}
-                        </section>
-                    </>)
-            
+                (<>
+                    <section className="search-filter container">
+                        <Search busca={busca} setBusca={setBusca} />
+                        <Filter filtro={filtro} setFiltro={setFiltro} />
+                    </section>
+                    <section className="cards container" >
+                        {lista.map((country, index) => (
+                            <Card
+                                key={country.name}
+                                id={index}
+                                region={country.region}
+                                name={country.name}
+                                flags={country.flags.png}
+                                population={country.population}
+                                capital={country.capital}
+                                info={setControlInfo}
+                                paginaPrincipal={setExibePaginaInicial}
+                                retornaID={setRetornaID}
+                            />
+                        ))}
+                    </section>
+                </>)
+
             }
 
 
