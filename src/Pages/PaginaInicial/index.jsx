@@ -13,28 +13,28 @@ import { useEffect } from 'react';
 export default function PaginaInicial() {
 
     const [countries] = useContext(MyContext);
+    const showCountries = countries;
     const [controlInfo, setControlInfo] = useState(false);
     const [exibePaginaInicial, setExibePaginaInicial] = useState(true);
     const [retornaID, setRetornaID] = useState(0);
     const [busca, setBusca] = useState('');
     const [filtro, setFiltro] = useState(null)
-    
-   
+    const [lista, setLista] = useState(showCountries);
 
-   function testaBusca(name){
-        const regex = new RegExp(busca, 'i');
-        return true;
-   }
-   
-   function testaFiltro(id){
+    
+    function testaFiltro(id){
         if(filtro !== null) return filtro ===id;
         return true;
     }
     useEffect(( ) =>{
         
-        const lista = countries.filter((country,index) => testaBusca(country.name) && testaFiltro(country.category.id));
+        function testaBusca(name){
+             const regex = new RegExp(busca, 'i');
+             return regex.test(name);
+        }
+        setLista(showCountries.filter((country,index) => testaBusca(country.name)));
         
-    },[busca,filtro]);
+    },[busca,filtro,showCountries]);
 
 
     return (
@@ -54,10 +54,10 @@ export default function PaginaInicial() {
                 exibePaginaInicial &&
                     (<>
                         <section className="search-filter container">
-                            <Search /><Filter />
+                            <Search busca={busca} setBusca={setBusca}/><Filter />
                         </section>
                         <section className="cards container" >
-                            {novaLista.map((country, index) => (
+                            {lista.map((country, index) => (
                                 <Card
                                     key={country.name}
                                     id={index}
@@ -69,7 +69,6 @@ export default function PaginaInicial() {
                                     info={setControlInfo}
                                     paginaPrincipal={setExibePaginaInicial}
                                     retornaID={setRetornaID}
-                                    busca={busca}
                                 />
                             ))}
                         </section>
